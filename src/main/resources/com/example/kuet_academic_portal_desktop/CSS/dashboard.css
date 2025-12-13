@@ -1,0 +1,85 @@
+/* --- ROOT BACKGROUND --- */
+
+/* Applies a soft gradient to the entire login screen background */
+.login-background {
+    -fx-background-color: linear-gradient(to bottom right, #385E72, #4F7EA8); /* Blue/Teal Gradient */
+}
+
+/* --- LOGIN PANEL (VBox) --- */
+
+.login-panel {
+    -fx-background-color: #FFFFFF; /* White card panel */
+    -fx-background-radius: 12;     /* Rounded corners */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 30, 0.0, 0.0, 15.0); /* Strong shadow for depth */
+    -fx-max-width: 400px;
+    -fx-min-height: 400px;
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
+/* --- HEADER TEXT --- */
+
+.login-header {
+    -fx-text-fill: #333333;
+    -fx-font-size: 2.0em;
+    -fx-font-weight: bold;
+}
+
+.login-subheader {
+    -fx-text-fill: #757575; /* Gray for descriptive text */
+    -fx-font-size: 0.9em;
+    -fx-padding: 0 0 10 0; /* Extra space below the header */
+}
+
+/* --- FORM FIELDS --- */
+
+.input-label {
+    -fx-text-fill: #555555;
+    -fx-font-size: 0.9em;
+    -fx-font-weight: 500;
+}
+
+.input-field {
+    -fx-background-color: #F8F8F8; /* Light gray background */
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 15 10 15;
+    -fx-font-size: 1.0em;
+    -fx-prompt-text-fill: #AAAAAA;
+}
+
+.input-field:focused {
+    -fx-border-color: #4F7EA8; /* Highlight color on focus (matches gradient) */
+    -fx-border-width: 2px;
+}
+
+/* --- LOGIN BUTTON --- */
+
+.login-button {
+    -fx-background-color: #4CAF50; /* Primary Action Color: Green */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 0 12 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(76, 175, 80, 0.4), 10, 0.0, 0.0, 5.0); /* Green glow shadow */
+    -fx-transition: -fx-background-color 0.2s;
+}
+
+.login-button:hover {
+    -fx-background-color: #388E3C; /* Darker green on hover */
+}
+
+/* --- FOOTER LINKS --- */
+
+.forgot-link, .signup-link {
+    -fx-text-fill: #4F7EA8; /* Link color (matches gradient) */
+    -fx-font-size: 0.9em;
+    -fx-cursor: hand;
+}
+
+.forgot-link:hover, .signup-link:hover {
+    -fx-underline: true;
+}

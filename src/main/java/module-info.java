@@ -12,5 +12,7 @@ module com.example.kuet_academic_portal_desktop {
     requires com.almasb.fxgl.all;
 
     opens com.example.kuet_academic_portal_desktop to javafx.fxml;
+    opens com.example.kuet_academic_portal_desktop.Controller to javafx.fxml;
+    opens com.example.kuet_academic_portal_desktop.CSS to javafx.fxml;
     exports com.example.kuet_academic_portal_desktop;
 }
