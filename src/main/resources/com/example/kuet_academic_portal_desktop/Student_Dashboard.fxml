@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.dashboardController">
     <AnchorPane prefHeight="200.0" prefWidth="200.0">
         <AnchorPane layoutY="4.0" prefHeight="800.0" prefWidth="300.0" style="-fx-background-color: #2C3E50;">
             <Label layoutX="86.0" layoutY="71.0" text="Welcome" textFill="WHITE">
@@ -21,7 +21,10 @@
                     <Font name="System Bold" size="29.0" />
                 </font>
             </Label>
-            <Label fx:id="Name" layoutX="136.0" layoutY="141.0" />
+            <Label fx:id="name_label" alignment="CENTER" layoutX="7.0" layoutY="141.0" prefWidth="284.0" textFill="WHITE">
+            <font>
+               <Font size="19.0" />
+            </font></Label>
             <VBox layoutX="94.0" layoutY="353.0" style="-fx-background-color: #2C3E50;" />
             <Button layoutX="22.0" layoutY="400.0" mnemonicParsing="false" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Class Routine" textAlignment="CENTER" AnchorPane.bottomAnchor="353.3333333333333" />
             <Button layoutX="22.0" layoutY="465.0" mnemonicParsing="false" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Assignment" textAlignment="CENTER" />

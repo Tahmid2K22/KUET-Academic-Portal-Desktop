@@ -6,7 +6,20 @@ import java.sql.SQLException;
 
 public class databaseConnect {
 
-    private Connection conn;
+    private static Connection conn;
+
+    public static Connection getConn() {
+        if(conn == null) {
+            databaseConnect dbConnect = new databaseConnect();
+            try {
+                conn = dbConnect.initialize();
+                System.out.println("Database connected successfully.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return conn;
+    }
 
     public Connection connect() throws SQLException {
         if (conn == null || conn.isClosed()) {

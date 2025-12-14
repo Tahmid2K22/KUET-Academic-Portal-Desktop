@@ -1,5 +1,6 @@
 package com.example.kuet_academic_portal_desktop.Controller;
 
+import com.example.kuet_academic_portal_desktop.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -58,12 +59,28 @@ public class LoginController {
             rs = stmt.executeQuery();
 
             if(rs.next()){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Login Successful");
-                alert.setContentText("Welcome, " + rs.getString("email") + "!");
-                alert.showAndWait();
-                Parent l = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/kuet_academic_portal_desktop/Student_Dashboard.fxml")));
+                Session session = Session.getInstance();
+                session.setEmail(rs.getString("email"));
+                session.setUserId(rs.getInt("id"));
+                session.setRole(rs.getString("role"));
+                String set = "USE studentdb";
+                String sql = "SELECT name FROM students WHERE email=?";
+                PreparedStatement ps = connection.prepareStatement(set);
+                PreparedStatement ps1 = connection.prepareStatement(sql);
+                ps1.setString(1, emailIn);
+                ps.executeUpdate();
+                ResultSet resultSet = ps1.executeQuery();
+                if(resultSet.next()){
+                    session.setName(resultSet.getString("name"));
+                }
+                ps.close();
+                ps1.close();
+                resultSet.close();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Student_Dashboard.fxml"));
+                Parent l = loader.load();
                 Stage s = (Stage) Login_btn.getScene().getWindow();
+
                 s.setTitle("Student Dashboard");
                 s.setScene(new Scene(l));
                 s.show();
