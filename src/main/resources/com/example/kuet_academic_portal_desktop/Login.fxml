@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.LoginController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #eaf1ff;">
          <children>
@@ -32,9 +32,9 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <TextField layoutX="40.0" layoutY="149.0" prefHeight="35.0" prefWidth="220.0" promptText="Email" style="-fx-background-radius: 5;" />
-            <PasswordField layoutX="40.0" layoutY="211.0" prefHeight="35.0" prefWidth="220.0" promptText="Password" style="-fx-background-radius: 5;" />
-            <Button layoutX="124.0" layoutY="290.0" mnemonicParsing="false" style="-fx-border-radius: 20; -fx-background-color: linear-gradient(        to right,        #4f7cff,        #38bdf8    );;" text="Login" textFill="WHITE">
+            <TextField fx:id="email" layoutX="40.0" layoutY="149.0" prefHeight="35.0" prefWidth="220.0" promptText="Email" style="-fx-background-radius: 5;" />
+            <PasswordField fx:id="pass" layoutX="40.0" layoutY="211.0" prefHeight="35.0" prefWidth="220.0" promptText="Password" style="-fx-background-radius: 5;" />
+            <Button fx:id="Login_btn" layoutX="124.0" layoutY="290.0" mnemonicParsing="false" onAction="#login" style="-fx-border-radius: 20; -fx-background-color: linear-gradient(        to right,        #4f7cff,        #38bdf8    );;" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
