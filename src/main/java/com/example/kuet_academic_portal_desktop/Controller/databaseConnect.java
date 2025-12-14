@@ -6,25 +6,35 @@ import java.sql.SQLException;
 
 public class databaseConnect {
 
+    private Connection conn;
+
     public Connection connect() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/StudentDB";
-        String username = "root";
-        String password = "123456";
-        return DriverManager.getConnection(url, username, password);
+        if (conn == null || conn.isClosed()) {
+            String url = "jdbc:mysql://localhost:3306/StudentDB";
+            String username = "root";
+            String password = "123456";
+            conn = DriverManager.getConnection(url, username, password);
+        }
+        return conn;
     }
-    public void disconnect(Connection connection) throws SQLException {
-        if (connection != null && !connection.isClosed()) {
-            connection.close();
+
+    public void disconnect() throws SQLException {
+        if (conn != null && !conn.isClosed()) {
+            conn.close();
         }
     }
 
-    public void initialize() {
-        try{
-            try (Connection conn = connect()) {
-                String sql = "CREATE DATABASE IF NOT EXISTS StudentDB";
-                conn.createStatement().executeUpdate(sql);
-                String sql2 = "USE StudentDB";
-                String sql3 = "CREATE TABLE IF NOT EXISTS students (" +
+    public Connection initialize() throws SQLException {
+        Connection connTemp = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/", "root", "123456"
+        );
+
+        connTemp.createStatement().executeUpdate("CREATE DATABASE IF NOT EXISTS StudentDB");
+
+        Connection dbConn = connect();
+
+        dbConn.createStatement().executeUpdate(
+                "CREATE TABLE IF NOT EXISTS students (" +
                         "id INT PRIMARY KEY AUTO_INCREMENT," +
                         "name VARCHAR(100) NOT NULL," +
                         "email VARCHAR(100) NOT NULL," +
@@ -34,17 +44,17 @@ public class databaseConnect {
                         "year INT NOT NULL," +
                         "term INT NOT NULL," +
                         "phone VARCHAR(15) NOT NULL," +
-                        "password VARCHAR(100) NOT NULL" +
-                        ")";
+                        "password VARCHAR(100) NOT NULL)"
+        );
 
-                conn.createStatement().executeUpdate(sql2);
-                conn.createStatement().executeUpdate(sql3);
-            }
-        } catch (SQLException e) {
-            System.out.println("Database initialization error: " + e.getMessage());
-        }
+        dbConn.createStatement().executeUpdate(
+                "CREATE TABLE IF NOT EXISTS users (" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "email VARCHAR(50) NOT NULL UNIQUE," +
+                        "password VARCHAR(100) NOT NULL," +
+                        "role VARCHAR(20) NOT NULL DEFAULT 'user')"
+        );
+
+        return dbConn;
     }
 }
-
-
-
