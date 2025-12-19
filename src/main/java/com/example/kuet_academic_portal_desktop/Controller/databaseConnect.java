@@ -3,6 +3,7 @@ package com.example.kuet_academic_portal_desktop.Controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class databaseConnect {
 
@@ -69,5 +70,21 @@ public class databaseConnect {
         );
 
         return dbConn;
+    }
+
+    public Object loadDashboardData() {
+        conn = getConn();
+        String query = "SELECT * FROM dashboard_data ";
+        try (Statement stmt = conn.createStatement();
+             var rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                return rs.getObject("data");
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
