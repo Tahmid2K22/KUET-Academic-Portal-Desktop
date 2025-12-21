@@ -25,6 +25,8 @@ public class NoticesController {
     private Label noNoticesLabel;
 
     public void initialize() {
+        System.out.println("Notices page opened. Session term=" + com.example.kuet_academic_portal_desktop.Session.getInstance().getTerm()
+                + ", year=" + com.example.kuet_academic_portal_desktop.Session.getInstance().getYear());
         loadAllNotices();
     }
 
@@ -32,15 +34,15 @@ public class NoticesController {
         Task<List<Notice>> loadNoticesTask = new Task<>() {
             @Override
             protected List<Notice> call() throws Exception {
-                // Load all notices from database
+
                 databaseConnect db = new databaseConnect();
-                List<Notice> notices = db.loadNoticeData();
-                return notices;
+                return db.loadNoticeData();
             }
 
             @Override
             protected void succeeded() {
                 List<Notice> notices = getValue();
+                System.out.println("Notices page loaded " + (notices == null ? 0 : notices.size()) + " notices");
                 Platform.runLater(() -> displayAllNotices(notices));
             }
 
@@ -107,4 +109,3 @@ public class NoticesController {
         }
     }
 }
-

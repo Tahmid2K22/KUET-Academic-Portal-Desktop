@@ -16,7 +16,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -52,7 +51,7 @@ public class LoginController {
                 return;
             }
 
-            String query = "SELECT * FROM mysql.users WHERE email=? AND password=?";
+            String query = "SELECT * FROM users WHERE email=? AND password=?";
             stmt = connection.prepareStatement(query);
             stmt.setString(1, emailIn);
             stmt.setString(2, passIn);
@@ -63,17 +62,20 @@ public class LoginController {
                 session.setEmail(rs.getString("email"));
                 session.setUserId(rs.getInt("id"));
                 session.setRole(rs.getString("role"));
-                String set = "USE studentdb";
-                String sql = "SELECT name FROM students WHERE email=?";
-                PreparedStatement ps = connection.prepareStatement(set);
+
+                // Query to get student details - select all required fields
+                String sql = "SELECT name, department, year, section, roll, term FROM students WHERE email=?";
                 PreparedStatement ps1 = connection.prepareStatement(sql);
                 ps1.setString(1, emailIn);
-                ps.executeUpdate();
                 ResultSet resultSet = ps1.executeQuery();
                 if(resultSet.next()){
                     session.setName(resultSet.getString("name"));
+                    session.setDepartment(resultSet.getString("department"));
+                    session.setYear(resultSet.getString("year"));
+                    session.setSection(resultSet.getString("section"));
+                    session.setRoll(resultSet.getString("roll"));
+                    session.setTerm(resultSet.getString("term"));
                 }
-                ps.close();
                 ps1.close();
                 resultSet.close();
 

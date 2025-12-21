@@ -80,8 +80,7 @@ public class dashboardController {
             @Override
             protected List<Notice> call() throws Exception {
                 databaseConnect db = new databaseConnect();
-                List<Notice> notices = db.loadNoticeData();
-                return notices;
+                return db.loadNoticeData();
             }
 
             @Override
