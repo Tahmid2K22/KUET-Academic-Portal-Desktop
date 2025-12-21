@@ -1,20 +1,37 @@
 package com.example.kuet_academic_portal_desktop.Controller;
 
+import com.example.kuet_academic_portal_desktop.Model.Notice;
 import com.example.kuet_academic_portal_desktop.Session;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class dashboardController {
     
     @FXML
     public Label cyclesLabel;
+    @FXML
     public Label tf_remaining;
     @FXML
     private Label name_label;
+    @FXML
+    private HBox noticeContainer;
 
 
     public void initialize() {
@@ -55,5 +72,70 @@ public class dashboardController {
 
         Thread thread = new Thread(loadDataTask);
         thread.start();
+        loadNotices();
+    }
+
+    private void loadNotices() {
+        Task<List<Notice>> loadNoticesTask = new Task<>() {
+            @Override
+            protected List<Notice> call() throws Exception {
+                databaseConnect db = new databaseConnect();
+                List<Notice> notices = db.loadNoticeData();
+                return notices;
+            }
+
+            @Override
+            protected void succeeded() {
+                List<Notice> notices = getValue();
+                Platform.runLater(() -> displayNotices(notices));
+            }
+
+            @Override
+            protected void failed() {
+                System.err.println("Failed to load notices: " + getException().getMessage());
+                if (getException() != null) {
+                    getException().printStackTrace();
+                }
+            }
+        };
+
+        Thread noticeThread = new Thread(loadNoticesTask);
+        noticeThread.setDaemon(true);
+        noticeThread.start();
+    }
+
+    private void displayNotices(List<Notice> notices) {
+        noticeContainer.getChildren().clear();
+
+        int displayCount = Math.min(notices.size(), 4);
+        for (int i = 0; i < displayCount; i++) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/notice_card.fxml"));
+                VBox noticeCard = loader.load();
+                NoticeCardController controller = loader.getController();
+                controller.setNoticeData(notices.get(i));
+                noticeContainer.getChildren().add(noticeCard);
+            } catch (IOException e) {
+                System.err.println("Failed to load notice card: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    private void openNoticesPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Notices.fxml"));
+            Parent noticesPage = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(noticesPage, 1200, 800);
+            stage.setScene(scene);
+            stage.setTitle("Notice Board - KUET Academic Portal");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Failed to load notices page: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

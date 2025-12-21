@@ -1,9 +1,13 @@
 package com.example.kuet_academic_portal_desktop.Controller;
 
+import com.example.kuet_academic_portal_desktop.Model.Notice;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class databaseConnect {
 
@@ -69,6 +73,15 @@ public class databaseConnect {
                         "role VARCHAR(20) NOT NULL DEFAULT 'user')"
         );
 
+        dbConn.createStatement().executeUpdate(
+                "CREATE TABLE IF NOT EXISTS notices (" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "title VARCHAR(200) NOT NULL," +
+                        "description TEXT NOT NULL," +
+                        "date VARCHAR(50) NOT NULL," +
+                        "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
+        );
+
         return dbConn;
     }
 
@@ -87,4 +100,29 @@ public class databaseConnect {
         }
         return null;
     }
+
+    public List<Notice> loadNoticeData() {
+        List<Notice> notices = new ArrayList<>();
+        conn = getConn();
+        String query = "SELECT title, description, date FROM notices ORDER BY date DESC";
+
+        try (Statement stmt = conn.createStatement();
+             var rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                Notice notice = new Notice(
+                    rs.getString("title"),
+                    rs.getString("description"),
+                    rs.getString("date")
+                );
+                notices.add(notice);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error loading notices from database: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return notices;
+    }
+
 }

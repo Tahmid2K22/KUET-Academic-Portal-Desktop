@@ -6,11 +6,13 @@ public class Session {
     private String email;
     private int userId;
     private String role;
-
-
+    private String department;
+    private String year;
+    private String section;
+    private String roll;
+    private String term;
     private String name;
 
-    public Session() { }
 
     public static Session getInstance() {
         if (instance == null) {
@@ -35,4 +37,13 @@ public class Session {
     public void setName(String name) {
         this.name = name;
     }
+    public String getDepartment() { return department; } public void setDepartment(String department) { this.department = department; }
+
+    public String getYear() { return year; } public void setYear(String year) { this.year = year; }
+
+    public String getSection() { return section; } public void setSection(String section) { this.section = section; }
+
+    public String getRoll() { return roll; } public void setRoll(String roll) { this.roll = roll; }
+
+    public String getTerm() { return term; } public void setTerm(String term) { this.term = term; }
 }
