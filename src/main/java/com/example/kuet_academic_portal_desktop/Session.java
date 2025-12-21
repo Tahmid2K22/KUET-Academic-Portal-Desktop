@@ -12,6 +12,7 @@ public class Session {
     private String roll;
     private String term;
     private String name;
+    private double cgpa;
 
 
     public static Session getInstance() {
@@ -46,4 +47,12 @@ public class Session {
     public String getRoll() { return roll; } public void setRoll(String roll) { this.roll = roll; }
 
     public String getTerm() { return term; } public void setTerm(String term) { this.term = term; }
+
+    public double getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(double cgpa) {
+        this.cgpa = cgpa;
+    }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.kuet_academic_portal_desktop.Controller.ResultsController"
+      spacing="18.0" prefWidth="900.0" prefHeight="800.0" style="-fx-background-color: #ECF0F1; -fx-padding: 22;">
+
+    <!-- CGPA section (top) -->
+    <VBox spacing="6.0" style="-fx-background-color: white; -fx-padding: 18; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 2);">
+        <Label text="CGPA" style="-fx-text-fill: #7F8C8D; -fx-font-size: 14px;" />
+
+        <Label fx:id="cgpaLabel" text="0.00" style="-fx-text-fill: #2C3E50; -fx-font-size: 44px; -fx-font-weight: bold;">
+            <font>
+                <Font name="System Bold" size="44.0" />
+            </font>
+        </Label>
+
+        <Label fx:id="termYearLabel" text="Year - Term -" style="-fx-text-fill: #34495E; -fx-font-size: 16px;" />
+    </VBox>
+
+    <!-- CT Marks chart section (below) -->
+    <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 18; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 2);">
+        <Label text="CT Marks" style="-fx-text-fill: #2C3E50; -fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <LineChart fx:id="ctMarksChart" createSymbols="true" legendVisible="false" prefHeight="420.0" VBox.vgrow="ALWAYS">
+            <xAxis>
+                <CategoryAxis label="Course" side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Marks" side="LEFT" autoRanging="true" />
+            </yAxis>
+        </LineChart>
+
+        <Label fx:id="emptyLabel" text="No CT marks found for this term/year." textFill="#7F8C8D" visible="false" />
+    </VBox>
+
+</VBox>
