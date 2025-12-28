@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="assignmentCard" spacing="10" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 5, 0, 0, 2);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="15" left="15" right="15" top="15" />
+    </padding>
+
+    <Label fx:id="courseLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3498db; -fx-background-color: #e3f2fd; -fx-padding: 4 8 4 8; -fx-background-radius: 4;" text="CSE 2103 - Algorithm Analysis">
+        <font>
+            <Font name="System Bold" size="12" />
+        </font>
+    </Label>
+
+    <Label fx:id="titleLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Assignment Title">
+        <font>
+            <Font name="System Bold" size="18" />
+        </font>
+    </Label>
+
+    <Label fx:id="descriptionLabel" style="-fx-font-size: 13px; -fx-text-fill: #555555; -fx-wrap-text: true;" text="Assignment description goes here..." wrapText="true">
+        <font>
+            <Font size="13" />
+        </font>
+    </Label>
+
+    <VBox spacing="5">
+        <Label fx:id="teacherLabel" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="Teacher: Dr. Name">
+            <font>
+                <Font size="12" />
+            </font>
+        </Label>
+
+        <Label fx:id="assignedLabel" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="Assigned: 2025-01-01 10:00">
+            <font>
+                <Font size="12" />
+            </font>
+        </Label>
+
+        <Label fx:id="dueLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" text="Due: 2025-01-15 23:59">
+            <font>
+                <Font name="System Bold" size="12" />
+            </font>
+        </Label>
+
+        <Label fx:id="statusLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 4 10 4 10; -fx-background-radius: 12; -fx-text-fill: white; -fx-background-color: #f39c12;" text="Status: Pending">
+            <font>
+                <Font name="System Bold" size="12" />
+            </font>
+        </Label>
+    </VBox>
+</VBox>
+

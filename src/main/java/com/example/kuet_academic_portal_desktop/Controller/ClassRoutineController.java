@@ -56,7 +56,7 @@ public class ClassRoutineController {
 
     private databaseConnect dbConnect;
 
-    private static final String[] DAYS = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+    private static final String[] DAYS = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"};
 
     private static final String[] TIME_SLOTS = {
         "08:00:00-08:50:00",
@@ -276,20 +276,7 @@ public class ClassRoutineController {
         public SimpleStringProperty slot5Property() { return slot5; }
         public SimpleStringProperty slot6Property() { return slot6; }
 
-        @SuppressWarnings("unused")
-        public String getDay() { return day.get(); }
-        @SuppressWarnings("unused")
-        public String getSlot1() { return slot1.get(); }
-        @SuppressWarnings("unused")
-        public String getSlot2() { return slot2.get(); }
-        @SuppressWarnings("unused")
-        public String getSlot3() { return slot3.get(); }
-        @SuppressWarnings("unused")
-        public String getSlot4() { return slot4.get(); }
-        @SuppressWarnings("unused")
-        public String getSlot5() { return slot5.get(); }
-        @SuppressWarnings("unused")
-        public String getSlot6() { return slot6.get(); }
+
     }
 
     @FXML

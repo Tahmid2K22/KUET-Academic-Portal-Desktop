@@ -3,6 +3,7 @@ package com.example.kuet_academic_portal_desktop.Controller;
 import com.example.kuet_academic_portal_desktop.Model.Notice;
 import com.example.kuet_academic_portal_desktop.Model.RoutineEntry;
 import com.example.kuet_academic_portal_desktop.Session;
+import com.example.kuet_academic_portal_desktop.Model.Assignment;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class databaseConnect {
                 "CREATE TABLE IF NOT EXISTS class_routine (" +
                         "id INT PRIMARY KEY AUTO_INCREMENT," +
                         "time_slot VARCHAR(50) NOT NULL," +
-                        "course_code VARCHAR(20) NOT NULL," +
+                        "course_no VARCHAR(20) NOT NULL," +
                         "course_name VARCHAR(200) NOT NULL," +
                         "teacher VARCHAR(100) NOT NULL," +
                         "room VARCHAR(50) NOT NULL," +
@@ -99,7 +100,6 @@ public class databaseConnect {
                         "department VARCHAR(50) NOT NULL)"
         );
 
-        // Create routine table with specified columns
         dbConn.createStatement().executeUpdate(
                 "CREATE TABLE IF NOT EXISTS routine (" +
                         "id INT PRIMARY KEY AUTO_INCREMENT," +
@@ -113,6 +113,22 @@ public class databaseConnect {
                         "term INT NOT NULL," +
                         "department VARCHAR(50) NOT NULL," +
                         "end_time TIME NOT NULL)"
+        );
+        dbConn.createStatement().executeUpdate(
+                "CREATE TABLE IF NOT EXISTS assignments (" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "title VARCHAR(200) NOT NULL," +
+                        "description TEXT NOT NULL," +
+                        "course_no VARCHAR(20) NOT NULL," +
+                        "course_name VARCHAR(200) NOT NULL," +
+                        "due_date TIMESTAMP NOT NULL," +
+                        "assigned_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
+                        "status VARCHAR(20) NOT NULL," +
+                        "year INT NOT NULL," +
+                        "term INT NOT NULL," +
+                        "department VARCHAR(50) NOT NULL," +
+                        "section VARCHAR(10) NOT NULL," +
+                        "teacher_name VARCHAR(100) NOT NULL)"
         );
 
         return dbConn;
@@ -167,7 +183,7 @@ public class databaseConnect {
         conn = getConn();
 
         StringBuilder query = new StringBuilder(
-            "SELECT time_slot, course_code, course_name, teacher, room, type FROM class_routine " +
+            "SELECT time_slot, course_no, course_name, teacher, room, type FROM class_routine " +
             "WHERE term=? AND year=? AND section=? AND department=?"
         );
 
@@ -204,7 +220,7 @@ public class databaseConnect {
                 com.example.kuet_academic_portal_desktop.Model.ClassSchedule schedule =
                     new com.example.kuet_academic_portal_desktop.Model.ClassSchedule(
                         rs.getString("time_slot"),
-                        rs.getString("course_code"),
+                        rs.getString("course_no"),
                         rs.getString("course_name"),
                         rs.getString("teacher"),
                         rs.getString("room"),
@@ -262,13 +278,6 @@ public class databaseConnect {
         }
     }
 
-    /**
-     * Load routine data from the routine table based on department, year, and section
-     * @param department Department filter
-     * @param year Year filter (e.g., "1st Year" -> 1)
-     * @param section Section filter
-     * @return List of RoutineEntry objects
-     */
     public List<RoutineEntry> loadRoutineData(String department, String year, String section) {
         List<RoutineEntry> routineList = new ArrayList<>();
         conn = getConn();
@@ -316,6 +325,54 @@ public class databaseConnect {
         return routineList;
     }
 
+    public List<Assignment> loadAssignmentData(String department, int year, int term, String section) {
+        List<Assignment> assignmentList = new ArrayList<>();
+        conn = getConn();
+
+        String query = "SELECT id, title, description, course_no, course_name, due_date, assigned_date, " +
+                       "status, year, term, department, section, teacher_name " +
+                       "FROM assignments WHERE department=? AND year=? AND term=? AND section=? " +
+                       "ORDER BY due_date ASC";
+
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, department);
+            stmt.setInt(2, year);
+            stmt.setInt(3, term);
+            stmt.setString(4, section);
+
+            System.out.println("Loading assignments for: Department=" + department +
+                             ", Year=" + year + ", Term=" + term + ", Section=" + section);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Assignment assignment = new Assignment(
+                    rs.getInt("id"),
+                    rs.getString("title"),
+                    rs.getString("description"),
+                    rs.getString("course_no"),
+                    rs.getString("course_name"),
+                    rs.getTimestamp("due_date"),
+                    rs.getTimestamp("assigned_date"),
+                    rs.getString("status"),
+                    rs.getInt("year"),
+                    rs.getInt("term"),
+                    rs.getString("department"),
+                    rs.getString("section"),
+                    rs.getString("teacher_name")
+                );
+                assignmentList.add(assignment);
+            }
+
+            System.out.println("Loaded " + assignmentList.size() + " assignments from database");
+
+        } catch (SQLException e) {
+            System.err.println("Error loading assignments from database: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return assignmentList;
+    }
 
     private int extractYearNumber(String yearStr) {
         if (yearStr == null) return 1;
