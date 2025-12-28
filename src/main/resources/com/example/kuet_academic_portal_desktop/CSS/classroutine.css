@@ -29,8 +29,23 @@
     -fx-font-size: 11px;
 }
 
+.table-view .table-cell .label {
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-text-overrun: clip;
+    -fx-max-width: infinity;
+}
+
 .table-row-cell {
     -fx-background-color: white;
+    -fx-cell-size: auto;
+    -fx-min-height: 60;
+    -fx-pref-height: -1;
+}
+
+.table-row-cell .table-cell {
+    -fx-pref-height: -1;
 }
 
 .table-row-cell:odd {

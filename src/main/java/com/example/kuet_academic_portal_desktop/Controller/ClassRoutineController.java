@@ -10,7 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -68,6 +71,9 @@ public class ClassRoutineController {
     public void initialize() {
         dbConnect = new databaseConnect();
 
+        // Configure table for proper row height
+        routineTableView.setFixedCellSize(-1);
+
         setupSemesterLabel();
         setupTableColumns();
         loadRoutineData();
@@ -91,13 +97,47 @@ public class ClassRoutineController {
         slot5Column.setCellValueFactory(data -> data.getValue().slot5Property());
         slot6Column.setCellValueFactory(data -> data.getValue().slot6Property());
 
-        dayColumn.setStyle("-fx-alignment: CENTER; -fx-font-weight: bold;");
-        slot1Column.setStyle("-fx-alignment: CENTER;");
-        slot2Column.setStyle("-fx-alignment: CENTER;");
-        slot3Column.setStyle("-fx-alignment: CENTER;");
-        slot4Column.setStyle("-fx-alignment: CENTER;");
-        slot5Column.setStyle("-fx-alignment: CENTER;");
-        slot6Column.setStyle("-fx-alignment: CENTER;");
+        // Set cell factories for text wrapping
+        slot1Column.setCellFactory(tc -> createWrappingCell());
+        slot2Column.setCellFactory(tc -> createWrappingCell());
+        slot3Column.setCellFactory(tc -> createWrappingCell());
+        slot4Column.setCellFactory(tc -> createWrappingCell());
+        slot5Column.setCellFactory(tc -> createWrappingCell());
+        slot6Column.setCellFactory(tc -> createWrappingCell());
+    }
+
+    private TableCell<DayRoutine, String> createWrappingCell() {
+        TableCell<DayRoutine, String> cell = new TableCell<>() {
+            private final Label label = new Label();
+
+            {
+                label.setWrapText(true);
+                label.setMaxWidth(Double.MAX_VALUE);
+                label.setMaxHeight(Double.MAX_VALUE);
+                label.setStyle("-fx-text-alignment: center; -fx-alignment: center; -fx-text-overrun: clip;");
+                setGraphic(label);
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setPrefHeight(Control.USE_COMPUTED_SIZE);
+            }
+
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null || item.isEmpty()) {
+                    label.setText(null);
+                    setGraphic(null);
+                } else {
+                    label.setText(item);
+                    setGraphic(label);
+                    // Set label width to match column width minus padding
+                    double columnWidth = getTableColumn().getWidth();
+                    label.setPrefWidth(columnWidth - 16);
+                    label.setMinHeight(Control.USE_PREF_SIZE);
+                }
+            }
+        };
+        cell.setWrapText(true);
+        return cell;
     }
 
     private void loadRoutineData() {
@@ -207,10 +247,6 @@ public class ClassRoutineController {
                "Room: " + entry.getRoomNumber();
     }
 
-    @SuppressWarnings("unused")
-    public void refreshRoutine() {
-        loadRoutineData();
-    }
 
     public static class DayRoutine {
         private final SimpleStringProperty day;
