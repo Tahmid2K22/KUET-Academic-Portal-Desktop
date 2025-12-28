@@ -145,12 +145,29 @@ public class dashboardController {
             Parent resultsPage = loader.load();
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(resultsPage, 1200, 800);
+            Scene scene = new Scene(resultsPage);
             stage.setScene(scene);
             stage.setTitle("Results - KUET Academic Portal");
             stage.show();
         } catch (IOException e) {
             System.err.println("Failed to load results page: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void openClassRoutinePage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Class_Routine.fxml"));
+            Parent classRoutinePage = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(classRoutinePage);
+            stage.setScene(scene);
+            stage.setTitle("Class Routine - KUET Academic Portal");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Failed to load class routine page: " + e.getMessage());
             e.printStackTrace();
         }
     }

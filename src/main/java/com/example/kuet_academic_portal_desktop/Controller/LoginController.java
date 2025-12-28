@@ -63,8 +63,7 @@ public class LoginController {
                 session.setUserId(rs.getInt("id"));
                 session.setRole(rs.getString("role"));
 
-                // Query to get student details - select all required fields
-                String sql = "SELECT name, department, year, section, roll, term FROM students WHERE email=?";
+                String sql = "SELECT name, department, year, section, roll, term,CGPA FROM students WHERE email=?";
                 PreparedStatement ps1 = connection.prepareStatement(sql);
                 ps1.setString(1, emailIn);
                 ResultSet resultSet = ps1.executeQuery();
@@ -75,6 +74,7 @@ public class LoginController {
                     session.setSection(resultSet.getString("section"));
                     session.setRoll(resultSet.getString("roll"));
                     session.setTerm(resultSet.getString("term"));
+                    session.setCgpa(resultSet.getDouble("CGPA"));
                 }
                 ps1.close();
                 resultSet.close();

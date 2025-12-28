@@ -12,6 +12,8 @@ module com.example.kuet_academic_portal_desktop {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires com.fasterxml.jackson.databind;
+    requires javafx.base;
+    requires javafx.graphics;
 
     opens com.example.kuet_academic_portal_desktop to javafx.fxml;
     opens com.example.kuet_academic_portal_desktop.Controller to javafx.fxml;
