@@ -36,7 +36,6 @@ public class Assignment {
         this.teacherName = teacherName;
     }
 
-    // Getters
     public int getId() { return id; }
     public String getTitle() { return title; }
     public String getDescription() { return description; }
@@ -51,7 +50,6 @@ public class Assignment {
     public String getSection() { return section; }
     public String getTeacherName() { return teacherName; }
 
-    // Setters
     public void setId(int id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
     public void setDescription(String description) { this.description = description; }
@@ -66,7 +64,6 @@ public class Assignment {
     public void setSection(String section) { this.section = section; }
     public void setTeacherName(String teacherName) { this.teacherName = teacherName; }
 
-
     public String getFormattedDueDate() {
         if (dueDate == null) return "N/A";
         return dueDate.toString().substring(0, 16).replace("T", " ");
@@ -80,7 +77,6 @@ public class Assignment {
     public boolean isOverdue() {
         if (dueDate == null) return false;
         return dueDate.before(new Timestamp(System.currentTimeMillis()));
-
     }
 
     @Override
@@ -93,7 +89,4 @@ public class Assignment {
                 ", status='" + status + '\'' +
                 '}';
     }
-
-
 }
-

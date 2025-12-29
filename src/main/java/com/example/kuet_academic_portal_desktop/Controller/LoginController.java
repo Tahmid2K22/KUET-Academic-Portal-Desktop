@@ -63,29 +63,45 @@ public class LoginController {
                 session.setUserId(rs.getInt("id"));
                 session.setRole(rs.getString("role"));
 
-                String sql = "SELECT name, department, year, section, roll, term,CGPA FROM students WHERE email=?";
-                PreparedStatement ps1 = connection.prepareStatement(sql);
-                ps1.setString(1, emailIn);
-                ResultSet resultSet = ps1.executeQuery();
-                if(resultSet.next()){
-                    session.setName(resultSet.getString("name"));
-                    session.setDepartment(resultSet.getString("department"));
-                    session.setYear(resultSet.getString("year"));
-                    session.setSection(resultSet.getString("section"));
-                    session.setRoll(resultSet.getString("roll"));
-                    session.setTerm(resultSet.getString("term"));
-                    session.setCgpa(resultSet.getDouble("CGPA"));
+                String role = rs.getString("role");
+
+                // Check if Admin
+                if ("Admin".equalsIgnoreCase(role)) {
+                    // Set default admin name
+                    session.setName("Administrator");
+
+                    // Load Admin Dashboard
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Admin_Dashboard.fxml"));
+                    Parent l = loader.load();
+                    Stage s = (Stage) Login_btn.getScene().getWindow();
+                    s.setTitle("Admin Dashboard");
+                    s.setScene(new Scene(l));
+                    s.show();
+                } else {
+                    // Load Student data and dashboard
+                    String sql = "SELECT name, department, year, section, roll, term,CGPA FROM students WHERE email=?";
+                    PreparedStatement ps1 = connection.prepareStatement(sql);
+                    ps1.setString(1, emailIn);
+                    ResultSet resultSet = ps1.executeQuery();
+                    if(resultSet.next()){
+                        session.setName(resultSet.getString("name"));
+                        session.setDepartment(resultSet.getString("department"));
+                        session.setYear(resultSet.getString("year"));
+                        session.setSection(resultSet.getString("section"));
+                        session.setRoll(resultSet.getString("roll"));
+                        session.setTerm(resultSet.getString("term"));
+                        session.setCgpa(resultSet.getDouble("CGPA"));
+                    }
+                    ps1.close();
+                    resultSet.close();
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Student_Dashboard.fxml"));
+                    Parent l = loader.load();
+                    Stage s = (Stage) Login_btn.getScene().getWindow();
+                    s.setTitle("Student Dashboard");
+                    s.setScene(new Scene(l));
+                    s.show();
                 }
-                ps1.close();
-                resultSet.close();
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Student_Dashboard.fxml"));
-                Parent l = loader.load();
-                Stage s = (Stage) Login_btn.getScene().getWindow();
-
-                s.setTitle("Student Dashboard");
-                s.setScene(new Scene(l));
-                s.show();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Login Failed");

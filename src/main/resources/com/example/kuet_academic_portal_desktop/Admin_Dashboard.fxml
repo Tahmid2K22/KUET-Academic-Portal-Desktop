@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.AdminDashboardController">
+    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+        <!-- Left Sidebar -->
+        <AnchorPane layoutY="0.0" prefHeight="800.0" prefWidth="280.0" style="-fx-background-color: linear-gradient(to bottom, #2C3E50, #34495E);">
+            <!-- Logo/Title Section -->
+            <VBox alignment="CENTER" layoutX="0.0" layoutY="30.0" spacing="10" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <children>
+                    <Label text="🎓" style="-fx-font-size: 48px;">
+                        <font>
+                            <Font size="48.0" />
+                        </font>
+                    </Label>
+                    <Label text="Admin Portal" textFill="WHITE">
+                        <font>
+                            <Font name="System Bold" size="24.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="adminNameLabel" alignment="CENTER" prefWidth="260.0" text="Administrator" textFill="#BDC3C7">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Label>
+                </children>
+            </VBox>
+
+            <!-- Navigation Menu -->
+            <VBox layoutX="10.0" layoutY="180.0" spacing="5" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" stylesheets="@CSS/admin_dashboard.css">
+                <children>
+                    <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#showHome" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="🏠  Home" textAlignment="CENTER">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="addStudentBtn" mnemonicParsing="false" onAction="#showAddStudent" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="👨‍🎓  Add Students" textAlignment="CENTER">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="addAssignmentBtn" mnemonicParsing="false" onAction="#showAddAssignment" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="📝  Add Assignment" textAlignment="CENTER">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="addAttendanceBtn" mnemonicParsing="false" onAction="#showAddAttendance" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="✓  Add Attendance" textAlignment="CENTER">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="addNoticeBtn" mnemonicParsing="false" onAction="#showAddNotice" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="📢  Add Notice" textAlignment="CENTER">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="addResultBtn" mnemonicParsing="false" onAction="#showAddResult" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="📊  Add Result" textAlignment="CENTER">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="addRoutineBtn" mnemonicParsing="false" onAction="#showAddRoutine" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="📅  Add Routine" textAlignment="CENTER">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+
+                    <!-- Spacer -->
+                    <VBox VBox.vgrow="ALWAYS" prefHeight="50" />
+
+                    <Button mnemonicParsing="false" onAction="#logout" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-button" text="🚪  Logout" textAlignment="CENTER" style="-fx-background-color: rgba(231, 76, 60, 0.2); -fx-text-fill: #E74C3C;">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Button>
+                </children>
+            </VBox>
+        </AnchorPane>
+
+        <!-- Main Content Area -->
+        <ScrollPane layoutX="280.0" layoutY="0.0" prefHeight="800.0" prefWidth="920.0" fitToWidth="true" fitToHeight="true" style="-fx-background-color: #ECF0F1; -fx-background: #ECF0F1;" stylesheets="@CSS/admin_dashboard.css">
+            <content>
+                <StackPane fx:id="contentArea" prefHeight="800.0" prefWidth="920.0" style="-fx-background-color: #ECF0F1;">
+                    <!-- Home View -->
+                    <VBox fx:id="homeView" alignment="TOP_CENTER" spacing="40" style="-fx-background-color: #ECF0F1;">
+                        <padding>
+                            <Insets top="50.0" left="40.0" right="40.0" bottom="50.0" />
+                        </padding>
+                        <children>
+                            <!-- Header Section -->
+                            <VBox alignment="CENTER" spacing="10">
+                                <children>
+                                    <Label text="Admin Dashboard" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;">
+                                        <font>
+                                            <Font name="System Bold" size="40.0" />
+                                        </font>
+                                    </Label>
+
+                                    <Label text="Manage Academic Portal" style="-fx-font-size: 18px; -fx-text-fill: #7F8C8D;">
+                                        <font>
+                                            <Font size="18.0" />
+                                        </font>
+                                    </Label>
+                                </children>
+                            </VBox>
+
+                            <!-- Dashboard Cards Row 1 -->
+                            <HBox spacing="25" alignment="CENTER">
+                                <children>
+                                    <VBox alignment="CENTER" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/admin_dashboard.css" prefWidth="260" prefHeight="160" style="-fx-background-color: linear-gradient(to bottom right, #3498DB, #2980B9);">
+                                        <children>
+                                            <Label text="👨‍🎓" style="-fx-font-size: 48px;" />
+                                            <Label text="Students" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                                            <Label text="Manage Student Records" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);" />
+                                        </children>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/admin_dashboard.css" prefWidth="260" prefHeight="160" style="-fx-background-color: linear-gradient(to bottom right, #9B59B6, #8E44AD);">
+                                        <children>
+                                            <Label text="📝" style="-fx-font-size: 48px;" />
+                                            <Label text="Assignments" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                                            <Label text="Create &amp; Manage Tasks" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);" />
+                                        </children>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/admin_dashboard.css" prefWidth="260" prefHeight="160" style="-fx-background-color: linear-gradient(to bottom right, #1ABC9C, #16A085);">
+                                        <children>
+                                            <Label text="✓" style="-fx-font-size: 48px;" />
+                                            <Label text="Attendance" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                                            <Label text="Track Student Presence" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);" />
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <!-- Dashboard Cards Row 2 -->
+                            <HBox spacing="25" alignment="CENTER">
+                                <children>
+                                    <VBox alignment="CENTER" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/admin_dashboard.css" prefWidth="260" prefHeight="160" style="-fx-background-color: linear-gradient(to bottom right, #E74C3C, #C0392B);">
+                                        <children>
+                                            <Label text="📢" style="-fx-font-size: 48px;" />
+                                            <Label text="Notices" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                                            <Label text="Publish Announcements" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);" />
+                                        </children>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/admin_dashboard.css" prefWidth="260" prefHeight="160" style="-fx-background-color: linear-gradient(to bottom right, #F39C12, #E67E22);">
+                                        <children>
+                                            <Label text="📊" style="-fx-font-size: 48px;" />
+                                            <Label text="Results" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                                            <Label text="Manage Exam Results" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);" />
+                                        </children>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/admin_dashboard.css" prefWidth="260" prefHeight="160" style="-fx-background-color: linear-gradient(to bottom right, #34495E, #2C3E50);">
+                                        <children>
+                                            <Label text="📅" style="-fx-font-size: 48px;" />
+                                            <Label text="Routine" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                                            <Label text="Schedule Classes" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);" />
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </StackPane>
+            </content>
+        </ScrollPane>
+    </AnchorPane>
+</StackPane>
+

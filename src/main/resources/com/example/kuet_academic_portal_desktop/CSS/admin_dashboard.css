@@ -1,0 +1,184 @@
+/* Admin Dashboard Styles - Matching Student Dashboard */
+
+/* Sidebar buttons */
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 15 20;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 0 3;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: #3498DB;
+}
+
+.sidebar-button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-button-active {
+    -fx-background-color: rgba(52, 152, 219, 0.2);
+    -fx-border-color: #3498DB;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);
+    -fx-cursor: hand;
+}
+
+.dashboard-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 15, 0, 0, 5);
+    -fx-translate-y: -5;
+}
+
+/* Form Styles */
+.admin-form-container {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-padding: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.admin-text-field {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 8px;
+    -fx-padding: 12px;
+    -fx-font-size: 14px;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+}
+
+.admin-text-field:focused {
+    -fx-border-color: #3498DB;
+    -fx-border-width: 2px;
+}
+
+.admin-combo-box {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 8px;
+    -fx-font-size: 14px;
+}
+
+.admin-text-area {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 8px;
+    -fx-padding: 12px;
+    -fx-font-size: 14px;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+}
+
+.admin-text-area:focused {
+    -fx-border-color: #3498DB;
+    -fx-border-width: 2px;
+}
+
+.admin-text-area .content {
+    -fx-background-color: transparent;
+}
+
+.admin-submit-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3498DB;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-color: #3498DB;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 15px 40px;
+}
+
+.admin-submit-button:hover {
+    -fx-background-color: #3498DB;
+    -fx-text-fill: white;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.admin-submit-button:pressed {
+    -fx-background-color: #2980B9;
+    -fx-text-fill: white;
+}
+
+.admin-cancel-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-color: #95a5a6;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 15px 40px;
+}
+
+.admin-cancel-button:hover {
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+}
+
+.admin-cancel-button:pressed {
+    -fx-background-color: #7f8c8d;
+    -fx-text-fill: white;
+}
+
+.form-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.form-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.date-picker {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 8px;
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: #F4F4F4;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #BDC3C7;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #95A5A6;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
