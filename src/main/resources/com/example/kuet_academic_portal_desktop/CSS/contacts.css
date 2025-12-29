@@ -1,0 +1,99 @@
+/* Contacts Page Styling */
+
+.contact-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.contact-card:hover {
+    -fx-background-color: #F8F9FA;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+
+.contact-name {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.contact-role {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.contact-designation {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-text-fill: #34495E;
+}
+
+.contact-info-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #5D6D7E;
+}
+
+.contact-info-value {
+    -fx-font-size: 13px;
+    -fx-text-fill: #2C3E50;
+}
+
+.contact-email {
+    -fx-text-fill: #2980B9;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.contact-info-box {
+    -fx-background-color: #F8F9FA;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+}
+
+/* Header styling */
+.contacts-header {
+    -fx-background-color: #2C3E50;
+    -fx-padding: 20;
+}
+
+.contacts-title {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.contacts-subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #BDC3C7;
+}
+
+/* Back button styling */
+.back-button {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #415B76;
+}
+
+/* Scroll pane styling */
+.contacts-scroll-pane {
+    -fx-background: #ECF0F1;
+    -fx-background-color: #ECF0F1;
+}
+
+.contacts-container {
+    -fx-background-color: transparent;
+}
+

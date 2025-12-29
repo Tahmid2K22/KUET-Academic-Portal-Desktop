@@ -31,8 +31,8 @@
                   <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Home" textAlignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#openClassRoutinePage" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Class Routine" textAlignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#openAssignmentPage" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Assignment" textAlignment="CENTER" />
-                  <Button mnemonicParsing="false" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Contact" textAlignment="CENTER" />
-                  <Button mnemonicParsing="false" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Attendance" textAlignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#openContactsPage" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Contact" textAlignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#openAttendancePage" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Attendance" textAlignment="CENTER" />
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openNoticesPage" prefHeight="47.0" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Notice" textAlignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#openResultsPage" prefWidth="260.0" styleClass="sidebar-button" stylesheets="@CSS/dashboard.css" text="Results" textAlignment="CENTER" />
             </children></VBox>

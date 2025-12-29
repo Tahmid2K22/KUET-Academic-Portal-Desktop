@@ -189,4 +189,38 @@ public class dashboardController {
         }
     }
 
+    @FXML
+    private void openContactsPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Contacts.fxml"));
+            Parent contactsPage = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(contactsPage);
+            stage.setScene(scene);
+            stage.setTitle("Contacts - KUET Academic Portal");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Failed to load contacts page: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void openAttendancePage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/kuet_academic_portal_desktop/Attendance.fxml"));
+            Parent attendancePage = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(attendancePage);
+            stage.setScene(scene);
+            stage.setTitle("Attendance - KUET Academic Portal");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Failed to load attendance page: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 }

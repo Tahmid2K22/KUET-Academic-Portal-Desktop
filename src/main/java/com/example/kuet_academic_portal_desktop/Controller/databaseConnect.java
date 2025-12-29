@@ -4,6 +4,8 @@ import com.example.kuet_academic_portal_desktop.Model.Notice;
 import com.example.kuet_academic_portal_desktop.Model.RoutineEntry;
 import com.example.kuet_academic_portal_desktop.Session;
 import com.example.kuet_academic_portal_desktop.Model.Assignment;
+import com.example.kuet_academic_portal_desktop.Model.Contact;
+import com.example.kuet_academic_portal_desktop.Model.Attendance;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -129,6 +131,33 @@ public class databaseConnect {
                         "department VARCHAR(50) NOT NULL," +
                         "section VARCHAR(10) NOT NULL," +
                         "teacher_name VARCHAR(100) NOT NULL)"
+        );
+
+        dbConn.createStatement().executeUpdate(
+                "CREATE TABLE IF NOT EXISTS contacts (" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "name VARCHAR(100) NOT NULL," +
+                        "role VARCHAR(10) NOT NULL," +
+                        "roll_id VARCHAR(20)," +
+                        "phone VARCHAR(20)," +
+                        "email VARCHAR(100)," +
+                        "department VARCHAR(50)," +
+                        "designation VARCHAR(50))"
+        );
+
+        dbConn.createStatement().executeUpdate(
+                "CREATE TABLE IF NOT EXISTS attendance (" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "course_no VARCHAR(20) NOT NULL," +
+                        "course_name VARCHAR(200) NOT NULL," +
+                        "date DATE NOT NULL," +
+                        "status VARCHAR(20) NOT NULL," +
+                        "year INT NOT NULL," +
+                        "term INT NOT NULL," +
+                        "department VARCHAR(50) NOT NULL," +
+                        "section VARCHAR(10) NOT NULL," +
+                        "student_roll VARCHAR(20) NOT NULL," +
+                        "UNIQUE KEY unique_attendance (course_no, date, student_roll))"
         );
 
         return dbConn;
@@ -385,5 +414,82 @@ public class databaseConnect {
         return 1;
     }
 
+    public List<Contact> loadContactData() {
+        List<Contact> contacts = new ArrayList<>();
+        conn = getConn();
+        String query = "SELECT id, name, role, roll_id, phone, email, department, designation FROM contacts ORDER BY name";
+
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                Contact contact = new Contact(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("role"),
+                    rs.getString("roll_id"),
+                    rs.getString("phone"),
+                    rs.getString("email"),
+                    rs.getString("department"),
+                    rs.getString("designation")
+                );
+                contacts.add(contact);
+            }
+
+            System.out.println("Loaded " + contacts.size() + " contacts from database");
+
+        } catch (SQLException e) {
+            System.err.println("Error loading contacts from database: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return contacts;
+    }
+
+    public List<Attendance> loadAttendanceSummary(String studentRoll, int year, int term, String department, String section) {
+        List<Attendance> attendanceSummary = new ArrayList<>();
+        conn = getConn();
+
+        String query = "SELECT " +
+                       "course_no, " +
+                       "course_name, " +
+                       "COUNT(*) as total_classes, " +
+                       "SUM(CASE WHEN status = 'Present' THEN 1 ELSE 0 END) as attended_classes " +
+                       "FROM attendance " +
+                       "WHERE student_roll = ? AND year = ? AND term = ? AND department = ? AND section = ? " +
+                       "GROUP BY course_no, course_name " +
+                       "ORDER BY course_no";
+
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, studentRoll);
+            stmt.setInt(2, year);
+            stmt.setInt(3, term);
+            stmt.setString(4, department);
+            stmt.setString(5, section);
+
+            System.out.println("Loading attendance for: Roll=" + studentRoll + ", Year=" + year +
+                             ", Term=" + term + ", Dept=" + department + ", Section=" + section);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Attendance attendance = new Attendance(
+                    rs.getString("course_no"),
+                    rs.getString("course_name"),
+                    rs.getInt("total_classes"),
+                    rs.getInt("attended_classes")
+                );
+                attendanceSummary.add(attendance);
+            }
+
+            System.out.println("Loaded " + attendanceSummary.size() + " attendance records from database");
+
+        } catch (SQLException e) {
+            System.err.println("Error loading attendance from database: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return attendanceSummary;
+    }
 
 }

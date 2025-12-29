@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.kuet_academic_portal_desktop.Controller.ContactCardController"
+      style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-border-width: 1;"
+      spacing="12" maxWidth="1100.0" prefWidth="1100.0">
+    <padding>
+        <Insets top="20" right="25" bottom="20" left="25"/>
+    </padding>
+
+    <!-- Name and Role Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <VBox spacing="4" HBox.hgrow="ALWAYS">
+            <Label fx:id="nameLabel" text="Contact Name" textFill="#2C3E50">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+            </Label>
+            <Label fx:id="roleLabel" text="Role" textFill="#7F8C8D">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Label>
+        </VBox>
+        <Label fx:id="designationLabel" text="Designation" textFill="#34495E" visible="true" managed="true">
+            <font>
+                <Font name="System Bold Italic" size="14.0" />
+            </font>
+        </Label>
+    </HBox>
+
+    <!-- Contact Information Grid -->
+    <VBox spacing="8" style="-fx-background-color: #F8F9FA; -fx-background-radius: 8; -fx-padding: 15;">
+        <!-- Roll/ID -->
+        <HBox spacing="10" alignment="CENTER_LEFT" fx:id="rollIdBox" visible="true" managed="true">
+            <Label text="📋 Roll/ID:" textFill="#5D6D7E" minWidth="100">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+            <Label fx:id="rollIdLabel" text="N/A" textFill="#2C3E50">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+        </HBox>
+
+        <!-- Department -->
+        <HBox spacing="10" alignment="CENTER_LEFT" fx:id="departmentBox" visible="true" managed="true">
+            <Label text="🏢 Department:" textFill="#5D6D7E" minWidth="100">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+            <Label fx:id="departmentLabel" text="N/A" textFill="#2C3E50">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+        </HBox>
+
+        <!-- Email -->
+        <HBox spacing="10" alignment="CENTER_LEFT" fx:id="emailBox" visible="true" managed="true">
+            <Label text="📧 Email:" textFill="#5D6D7E" minWidth="100">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+            <Label fx:id="emailLabel" text="N/A" textFill="#2980B9" style="-fx-underline: true; -fx-cursor: hand;">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+        </HBox>
+
+        <!-- Phone -->
+        <HBox spacing="10" alignment="CENTER_LEFT" fx:id="phoneBox" visible="true" managed="true">
+            <Label text="📞 Phone:" textFill="#5D6D7E" minWidth="100">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+            <Label fx:id="phoneLabel" text="N/A" textFill="#2C3E50">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+        </HBox>
+    </VBox>
+</VBox>
+
