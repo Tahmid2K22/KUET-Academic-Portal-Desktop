@@ -41,15 +41,15 @@
          <content>
               <AnchorPane prefHeight="800.0" prefWidth="900.0">
                   <VBox fx:id="semesterCard" alignment="TOP_CENTER" layoutX="87.0" layoutY="40.0" prefWidth="300" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/dashboard.css" xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml">
-      
+
                       <Label style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" text="Semester Status" />
-      
+
                       <Label fx:id="cyclesLabel" style="-fx-text-fill: white; -fx-font-size: 40px; -fx-font-weight: bold;" text="Week: 10">
                      <font>
                         <Font size="63.0" />
                      </font>
                   </Label>
-      
+
                       <Label fx:id="weekLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" />
                   </VBox>
                <VBox fx:id="semesterCard1" alignment="TOP_CENTER" layoutX="461.0" layoutY="40.0" prefWidth="300" spacing="15" styleClass="dashboard-card" stylesheets="@CSS/dashboard.css">
@@ -85,7 +85,7 @@
                   <opaqueInsets>
                      <Insets left="10.0" />
                   </opaqueInsets>
-                  <padding> 
+                  <padding>
                      <Insets left="10.0" />
                   </padding>
                </Separator>
@@ -102,9 +102,9 @@
                      <Insets right="10.0" />
                   </padding>
                </HBox>
-      
-      
-      
+
+
+
               </AnchorPane>
          </content>
       </ScrollPane>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.AdminDashboardController">
+<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.AssnController">
     <padding>
         <Insets top="30.0" left="50.0" right="50.0" bottom="30.0" />
     </padding>
@@ -31,7 +31,7 @@
                 <VBox spacing="8">
                     <children>
                         <Label text="Assignment Title:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                        <TextField fx:id="titleField" promptText="Enter assignment title" styleClass="admin-text-field" stylesheets="@CSS/admin_dashboard.css" prefHeight="40" />
+                        <TextField fx:id="titleFld" promptText="Enter assignment title" styleClass="admin-text-field" stylesheets="@CSS/admin_dashboard.css" prefHeight="40" />
                     </children>
                 </VBox>
 
@@ -41,14 +41,14 @@
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Course Number:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                                <TextField fx:id="courseNoField" promptText="e.g., CSE 2201" styleClass="admin-text-field" stylesheets="@CSS/admin_dashboard.css" prefHeight="40" />
+                                <TextField fx:id="courseNoFld" promptText="e.g., CSE 2201" styleClass="admin-text-field" stylesheets="@CSS/admin_dashboard.css" prefHeight="40" />
                             </children>
                         </VBox>
 
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Course Name:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                                <TextField fx:id="courseNameField" promptText="e.g., Advanced Programming" styleClass="admin-text-field" stylesheets="@CSS/admin_dashboard.css" prefHeight="40" />
+                                <TextField fx:id="courseNameFld" promptText="e.g., Advanced Programming" styleClass="admin-text-field" stylesheets="@CSS/admin_dashboard.css" prefHeight="40" />
                             </children>
                         </VBox>
                     </children>
@@ -58,7 +58,7 @@
                 <VBox spacing="8">
                     <children>
                         <Label text="Description:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                        <TextArea fx:id="descriptionArea" promptText="Enter assignment description" styleClass="admin-text-area" stylesheets="@CSS/admin_dashboard.css" prefHeight="120" wrapText="true" />
+                        <TextArea fx:id="descArea" promptText="Enter assignment description" styleClass="admin-text-area" stylesheets="@CSS/admin_dashboard.css" prefHeight="120" wrapText="true" />
                     </children>
                 </VBox>
 
@@ -68,14 +68,14 @@
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Assigned Date:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                                <DatePicker fx:id="assignedDatePicker" promptText="Select date" styleClass="date-picker" stylesheets="@CSS/admin_dashboard.css" prefWidth="330" prefHeight="40" />
+                                <DatePicker fx:id="assignedPicker" promptText="Select date" styleClass="date-picker" stylesheets="@CSS/admin_dashboard.css" prefWidth="330" prefHeight="40" />
                             </children>
                         </VBox>
 
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Due Date:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                                <DatePicker fx:id="dueDatePicker" promptText="Select date" styleClass="date-picker" stylesheets="@CSS/admin_dashboard.css" prefWidth="330" prefHeight="40" />
+                                <DatePicker fx:id="duePicker" promptText="Select date" styleClass="date-picker" stylesheets="@CSS/admin_dashboard.css" prefWidth="330" prefHeight="40" />
                             </children>
                         </VBox>
                     </children>
@@ -87,21 +87,21 @@
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Year:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                                <ComboBox fx:id="yearCombo" promptText="Select Year" styleClass="admin-combo-box" stylesheets="@CSS/admin_dashboard.css" prefWidth="210" prefHeight="40" />
+                                <ComboBox fx:id="yearBox" promptText="Select Year" styleClass="admin-combo-box" stylesheets="@CSS/admin_dashboard.css" prefWidth="210" prefHeight="40" />
                             </children>
                         </VBox>
 
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Term:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                                <ComboBox fx:id="termCombo" promptText="Select Term" styleClass="admin-combo-box" stylesheets="@CSS/admin_dashboard.css" prefWidth="210" prefHeight="40" />
+                                <ComboBox fx:id="termBox" promptText="Select Term" styleClass="admin-combo-box" stylesheets="@CSS/admin_dashboard.css" prefWidth="210" prefHeight="40" />
                             </children>
                         </VBox>
 
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Section:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
-                                <ComboBox fx:id="sectionCombo" promptText="Select Section" styleClass="admin-combo-box" stylesheets="@CSS/admin_dashboard.css" prefWidth="210" prefHeight="40" />
+                                <ComboBox fx:id="sectionBox" promptText="Select Section" styleClass="admin-combo-box" stylesheets="@CSS/admin_dashboard.css" prefWidth="210" prefHeight="40" />
                             </children>
                         </VBox>
                     </children>
@@ -113,7 +113,7 @@
                         <Insets top="20.0" />
                     </padding>
                     <children>
-                        <Button text="Add Assignment" onAction="#handleSubmit" styleClass="admin-submit-button" stylesheets="@CSS/admin_dashboard.css" prefWidth="180" prefHeight="45" />
+                        <Button text="Add Assignment" onAction="#addAssn" styleClass="admin-submit-button" stylesheets="@CSS/admin_dashboard.css" prefWidth="180" prefHeight="45" />
                         <Button text="Clear Form" onAction="#clearForm" styleClass="admin-cancel-button" stylesheets="@CSS/admin_dashboard.css" prefWidth="180" prefHeight="45" />
                     </children>
                 </HBox>

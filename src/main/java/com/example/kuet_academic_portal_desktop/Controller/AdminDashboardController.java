@@ -1,6 +1,7 @@
 package com.example.kuet_academic_portal_desktop.Controller;
 
 import com.example.kuet_academic_portal_desktop.Session;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,7 @@ public class AdminDashboardController {
 
     @FXML private Button homeBtn;
     @FXML private Button addStudentBtn;
+    @FXML private Button updateStudentBtn;
     @FXML private Button addAssignmentBtn;
     @FXML private Button addAttendanceBtn;
     @FXML private Button addNoticeBtn;
@@ -66,6 +68,12 @@ public class AdminDashboardController {
     }
 
     @FXML
+    public void showUpdateStudent() {
+        loadView("/com/example/kuet_academic_portal_desktop/Admin_Update_Student.fxml");
+        setActiveButton(updateStudentBtn);
+    }
+
+    @FXML
     public void showAddAssignment() {
         loadView("/com/example/kuet_academic_portal_desktop/Admin_Add_Assignment.fxml");
         setActiveButton(addAssignmentBtn);
@@ -105,6 +113,8 @@ public class AdminDashboardController {
             Object controller = loader.getController();
             if (controller instanceof AddStudentController) {
                 ((AddStudentController) controller).setParentController(this);
+            } else if (controller instanceof UpdateStudentController) {
+                ((UpdateStudentController) controller).setParentController(this);
             } else if (controller instanceof AddAssignmentController) {
                 ((AddAssignmentController) controller).setParentController(this);
             } else if (controller instanceof AddAttendanceController) {
@@ -157,6 +167,8 @@ public class AdminDashboardController {
     public void closeConnection() throws SQLException {
         db.disconnect();
     }
+
+    
 
     public static class AddStudentController {
         @FXML private TextField nameField;
@@ -775,6 +787,165 @@ public class AdminDashboardController {
             teacherField.clear();
             roomField.clear();
             dayCombo.setValue("Saturday");
+        }
+    }
+
+    public static class UpdateStudentController {
+        @FXML private TextField searchRollField;
+        @FXML private VBox updateFormContainer;
+        @FXML private TextField nameField;
+        @FXML private TextField rollField;
+        @FXML private TextField emailField;
+        @FXML private TextField phoneField;
+        @FXML private ComboBox<String> yearCombo;
+        @FXML private ComboBox<String> termCombo;
+        @FXML private ComboBox<String> sectionCombo;
+        @FXML private ComboBox<String> deptCombo;
+
+        private AdminDashboardController parentController;
+        private int currentStudentId = -1;
+
+        @FXML
+        public void initialize() {
+            yearCombo.getItems().addAll("1", "2", "3", "4");
+            termCombo.getItems().addAll("1", "2");
+            sectionCombo.getItems().addAll("A", "B", "C");
+            deptCombo.getItems().addAll("CSE", "EEE", "ME", "CE", "IPE");
+        }
+
+        public void setParentController(AdminDashboardController parent) {
+            this.parentController = parent;
+        }
+
+        @FXML
+        public void searchStudent() {
+            String searchRoll = searchRollField.getText().trim();
+
+            if (searchRoll.isEmpty()) {
+                parentController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Please enter a roll number");
+                return;
+            }
+
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            try {
+                conn = parentController.getConnection();
+                String query = "SELECT * FROM students WHERE roll = ?";
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1, searchRoll);
+                rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    currentStudentId = rs.getInt("id");
+                    nameField.setText(rs.getString("name"));
+                    rollField.setText(rs.getString("roll"));
+                    emailField.setText(rs.getString("email"));
+                    phoneField.setText(rs.getString("phone") != null ? rs.getString("phone") : "");
+                    yearCombo.setValue(String.valueOf(rs.getInt("year")));
+                    termCombo.setValue(String.valueOf(rs.getInt("term")));
+                    sectionCombo.setValue(rs.getString("section"));
+                    deptCombo.setValue(rs.getString("department"));
+
+                    updateFormContainer.setVisible(true);
+                    updateFormContainer.setManaged(true);
+                } else {
+                    parentController.showAlert(Alert.AlertType.ERROR, "Not Found", "No student found with roll: " + searchRoll);
+                    updateFormContainer.setVisible(false);
+                    updateFormContainer.setManaged(false);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                parentController.showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to search student: " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                    if (stmt != null) stmt.close();
+                    if (conn != null) parentController.closeConnection();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        @FXML
+        public void updateStudent() {
+            if (currentStudentId == -1) {
+                parentController.showAlert(Alert.AlertType.ERROR, "Error", "No student selected");
+                return;
+            }
+
+            String name = nameField.getText().trim();
+            String email = emailField.getText().trim();
+            String phone = phoneField.getText().trim();
+            String yearText = yearCombo.getValue();
+            String termText = termCombo.getValue();
+            String section = sectionCombo.getValue();
+            String department = deptCombo.getValue();
+
+            if (name.isEmpty() || email.isEmpty()) {
+                parentController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Name and Email are required");
+                return;
+            }
+
+            Connection conn = null;
+            PreparedStatement stmt = null;
+
+            try {
+                int year = Integer.parseInt(yearText);
+                int term = Integer.parseInt(termText);
+
+                conn = parentController.getConnection();
+                String query = "UPDATE students SET name = ?, email = ?, phone = ?, year = ?, term = ?, section = ?, department = ? WHERE id = ?";
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1, name);
+                stmt.setString(2, email);
+                stmt.setString(3, phone);
+                stmt.setInt(4, year);
+                stmt.setInt(5, term);
+                stmt.setString(6, section);
+                stmt.setString(7, department);
+                stmt.setInt(8, currentStudentId);
+
+                int rowsUpdated = stmt.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    parentController.showAlert(Alert.AlertType.INFORMATION, "Success", "Student information updated successfully!");
+                } else {
+                    parentController.showAlert(Alert.AlertType.ERROR, "Error", "Failed to update student");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                parentController.showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to update student: " + e.getMessage());
+            } catch (NumberFormatException e) {
+                parentController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Invalid year or term value");
+            } finally {
+                try {
+                    if (stmt != null) stmt.close();
+                    if (conn != null) parentController.closeConnection();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        @FXML
+        public void clearForm() {
+            searchRollField.clear();
+            nameField.clear();
+            rollField.clear();
+            emailField.clear();
+            phoneField.clear();
+            yearCombo.setValue(null);
+            termCombo.setValue(null);
+            sectionCombo.setValue(null);
+            deptCombo.setValue(null);
+            updateFormContainer.setVisible(false);
+            updateFormContainer.setManaged(false);
+            currentStudentId = -1;
         }
     }
 }

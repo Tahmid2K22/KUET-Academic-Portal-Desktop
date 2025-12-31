@@ -8,34 +8,22 @@
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 15 20;
     -fx-cursor: hand;
-    -fx-border-color: transparent;
-    -fx-border-width: 0 0 0 3;
-}
-
-.sidebar-button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.1);
-    -fx-border-color: #3498DB;
-}
-
-.sidebar-button:pressed {
-    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: white;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-radius: 0;
 }
 
 .sidebar-button-active {
-    -fx-background-color: rgba(52, 152, 219, 0.2);
-    -fx-border-color: #3498DB;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 2 0;
 }
 
-/* Dashboard Cards */
+
 .dashboard-card {
     -fx-background-radius: 15;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);
-    -fx-cursor: hand;
-}
-
-.dashboard-card:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 15, 0, 0, 5);
-    -fx-translate-y: -5;
 }
 
 /* Form Styles */
@@ -57,7 +45,6 @@
 }
 
 .admin-text-field:focused {
-    -fx-border-color: #3498DB;
     -fx-border-width: 2px;
 }
 
@@ -78,7 +65,6 @@
 }
 
 .admin-text-area:focused {
-    -fx-border-color: #3498DB;
     -fx-border-width: 2px;
 }
 
@@ -87,52 +73,30 @@
 }
 
 .admin-submit-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: #3498DB;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8px;
-    -fx-border-color: #3498DB;
-    -fx-border-width: 2px;
-    -fx-border-radius: 8px;
-    -fx-cursor: hand;
-    -fx-padding: 15px 40px;
-}
-
-.admin-submit-button:hover {
     -fx-background-color: #3498DB;
     -fx-text-fill: white;
-    -fx-scale-x: 1.02;
-    -fx-scale-y: 1.02;
-}
-
-.admin-submit-button:pressed {
-    -fx-background-color: #2980B9;
-    -fx-text-fill: white;
-}
-
-.admin-cancel-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: #95a5a6;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
-    -fx-border-color: #95a5a6;
-    -fx-border-width: 2px;
+    -fx-border-width: 0;
     -fx-border-radius: 8px;
     -fx-cursor: hand;
     -fx-padding: 15px 40px;
 }
 
-.admin-cancel-button:hover {
+
+.admin-cancel-button {
     -fx-background-color: #95a5a6;
     -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-width: 0;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 15px 40px;
 }
 
-.admin-cancel-button:pressed {
-    -fx-background-color: #7f8c8d;
-    -fx-text-fill: white;
-}
 
 .form-label {
     -fx-font-size: 14px;
@@ -174,9 +138,6 @@
     -fx-background-radius: 5;
 }
 
-.scroll-bar .thumb:hover {
-    -fx-background-color: #95A5A6;
-}
 
 .scroll-bar .increment-button,
 .scroll-bar .decrement-button {
