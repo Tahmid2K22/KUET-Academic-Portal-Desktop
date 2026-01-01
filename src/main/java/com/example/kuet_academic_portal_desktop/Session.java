@@ -55,4 +55,18 @@ public class Session {
     public void setCgpa(double cgpa) {
         this.cgpa = cgpa;
     }
+
+    public void clearSession() {
+        this.email = null;
+        this.userId = 0;
+        this.role = null;
+        this.department = null;
+        this.year = null;
+        this.section = null;
+        this.roll = null;
+        this.term = null;
+        this.name = null;
+        this.cgpa = 0.0;
+        instance = null;
+    }
 }

@@ -1,47 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.ResultsController">
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.ResultsController">
    <content>
-      <VBox prefHeight="800.0" prefWidth="900.0" spacing="18.0" style="-fx-background-color: #ECF0F1; -fx-padding: 22;">
+      <VBox prefHeight="800.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: #ECF0F1; -fx-padding: 25;">
 
-          <VBox spacing="6.0" style="-fx-background-color: white; -fx-padding: 18; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 2);">
-              <Label style="-fx-text-fill: #7F8C8D; -fx-font-size: 14px;" text="CGPA" />
-      
-              <Label fx:id="cgpaLabel" style="-fx-text-fill: #2C3E50; -fx-font-size: 44px; -fx-font-weight: bold;" text="0.00">
+          <!-- Header -->
+          <HBox alignment="CENTER_LEFT" spacing="15">
+              <Label text="Academic Results" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;">
                   <font>
-                      <Font name="System Bold" size="44.0" />
+                      <Font name="System Bold" size="28" />
                   </font>
               </Label>
-      
-              <Label fx:id="termYearLabel" style="-fx-text-fill: #34495E; -fx-font-size: 16px;" text="Year - Term -" />
-          </VBox>
+          </HBox>
 
-          <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 18; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 2);">
-              <Label style="-fx-text-fill: #2C3E50; -fx-font-size: 18px; -fx-font-weight: bold;" text="CT Marks" />
-      
-              <LineChart fx:id="ctMarksChart" createSymbols="true" legendVisible="false" prefHeight="420.0" VBox.vgrow="ALWAYS">
+          <!-- CGPA Summary Card -->
+          <HBox spacing="15">
+              <VBox spacing="6.0" style="-fx-background-color: #3498db; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);" HBox.hgrow="ALWAYS">
+                  <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Current CGPA" />
+
+                  <Label fx:id="cgpaLabel" style="-fx-text-fill: white; -fx-font-size: 48px; -fx-font-weight: bold;" text="0.00">
+                      <font>
+                          <Font name="System Bold" size="48.0" />
+                      </font>
+                  </Label>
+
+                  <Label fx:id="termYearLabel" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-opacity: 0.9;" text="Year - Term -" />
+              </VBox>
+
+              <VBox spacing="6.0" style="-fx-background-color: #27ae60; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);" HBox.hgrow="ALWAYS">
+                  <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Total Results" />
+
+                  <Label fx:id="totalResultsLabel" style="-fx-text-fill: white; -fx-font-size: 48px; -fx-font-weight: bold;" text="0">
+                      <font>
+                          <Font name="System Bold" size="48.0" />
+                      </font>
+                  </Label>
+
+                  <Label style="-fx-text-fill: white; -fx-font-size: 14px; -fx-opacity: 0.9;" text="Exams Completed" />
+              </VBox>
+
+              <VBox spacing="6.0" style="-fx-background-color: #f39c12; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);" HBox.hgrow="ALWAYS">
+                  <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Average Score" />
+
+                  <Label fx:id="averageScoreLabel" style="-fx-text-fill: white; -fx-font-size: 48px; -fx-font-weight: bold;" text="0%">
+                      <font>
+                          <Font name="System Bold" size="48.0" />
+                      </font>
+                  </Label>
+
+                  <Label style="-fx-text-fill: white; -fx-font-size: 14px; -fx-opacity: 0.9;" text="Overall Performance" />
+              </VBox>
+          </HBox>
+
+          <!-- Results Histogram -->
+          <VBox spacing="12.0" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 2);">
+              <Label style="-fx-text-fill: #2C3E50; -fx-font-size: 20px; -fx-font-weight: bold;" text="Performance Overview (Histogram)">
+                  <font>
+                      <Font name="System Bold" size="20" />
+                  </font>
+              </Label>
+
+              <BarChart fx:id="resultsHistogram" legendVisible="false" prefHeight="300.0" VBox.vgrow="ALWAYS">
                   <xAxis>
-                      <CategoryAxis label="BOTTOM" />
+                      <CategoryAxis label="Courses" side="BOTTOM" />
                   </xAxis>
                   <yAxis>
-                      <NumberAxis autoRanging="true" label="Marks" side="LEFT" />
+                      <NumberAxis label="Percentage (%)" side="LEFT" lowerBound="0" upperBound="100" autoRanging="false" tickUnit="10" />
                   </yAxis>
-              </LineChart>
-      
-              <Label fx:id="emptyLabel" text="No CT marks found for this term/year." textFill="#7F8C8D" visible="false" />
+              </BarChart>
+
+              <Label fx:id="emptyHistogramLabel" text="No results available to display." textFill="#95a5a6" visible="false" style="-fx-font-size: 14px;" />
           </VBox>
-         <Button mnemonicParsing="false" style="-fx-background-color: #34495E; -fx-text-fill: white;" text="Back to Dashboard" onAction="#goBackToDashboard" />
-      
+
+          <!-- Individual Results List -->
+          <VBox spacing="12.0" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 2);">
+              <Label style="-fx-text-fill: #2C3E50; -fx-font-size: 20px; -fx-font-weight: bold;" text="Detailed Results">
+                  <font>
+                      <Font name="System Bold" size="20" />
+                  </font>
+              </Label>
+
+              <VBox fx:id="resultsContainer" spacing="10" />
+
+              <Label fx:id="emptyLabel" text="No results found for this term/year." textFill="#95a5a6" visible="false" style="-fx-font-size: 14px;" />
+          </VBox>
+
+          <!-- Back Button -->
+          <HBox alignment="CENTER">
+              <Button mnemonicParsing="false" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 12 30; -fx-background-radius: 6; -fx-cursor: hand;" text="← Back to Dashboard" onAction="#goBackToDashboard">
+                  <font>
+                      <Font size="14" />
+                  </font>
+              </Button>
+          </HBox>
+
       </VBox>
    </content>
 </ScrollPane>

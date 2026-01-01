@@ -160,6 +160,17 @@ public class databaseConnect {
                         "UNIQUE KEY unique_attendance (course_no, date, student_roll))"
         );
 
+        dbConn.createStatement().executeUpdate(
+                "CREATE TABLE IF NOT EXISTS results (" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "roll VARCHAR(20) NOT NULL," +
+                        "title VARCHAR(200) NOT NULL," +
+                        "mark DOUBLE NOT NULL," +
+                        "total_mark DOUBLE NOT NULL," +
+                        "term INT NOT NULL," +
+                        "year INT NOT NULL)"
+        );
+
         return dbConn;
     }
 
@@ -383,12 +394,7 @@ public class databaseConnect {
                     rs.getString("course_name"),
                     rs.getTimestamp("due_date"),
                     rs.getTimestamp("assigned_date"),
-                    rs.getString("status"),
-                    rs.getInt("year"),
-                    rs.getInt("term"),
-                    rs.getString("department"),
-                    rs.getString("section"),
-                    rs.getString("teacher_name")
+                    rs.getString("status")
                 );
                 assignmentList.add(assignment);
             }

@@ -97,6 +97,22 @@
     -fx-padding: 15px 40px;
 }
 
+.admin-danger-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-width: 0;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 15px 40px;
+}
+
+.admin-danger-button:hover {
+    -fx-background-color: #c0392b;
+}
+
 
 .form-label {
     -fx-font-size: 14px;

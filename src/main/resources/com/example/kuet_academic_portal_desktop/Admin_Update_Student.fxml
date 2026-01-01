@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.AdminDashboardController$UpdateStudentController">
+<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.UpdateStudentController" prefHeight="800.0" prefWidth="1200.0">
     <padding>
         <Insets top="30.0" left="50.0" right="50.0" bottom="30.0" />
     </padding>

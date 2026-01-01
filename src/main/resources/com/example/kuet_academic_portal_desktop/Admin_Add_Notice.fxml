@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.AdminDashboardController$AddNoticeController">
+<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kuet_academic_portal_desktop.Controller.AddNoticeController" prefHeight="800.0" prefWidth="1200.0">
     <padding>
         <Insets top="30.0" left="50.0" right="50.0" bottom="30.0" />
     </padding>
@@ -27,6 +27,7 @@
                 <Insets top="30.0" left="30.0" right="30.0" bottom="30.0" />
             </padding>
             <children>
+                <!-- Title -->
                 <VBox spacing="8">
                     <children>
                         <Label text="Notice Title:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
@@ -34,6 +35,7 @@
                     </children>
                 </VBox>
 
+                <!-- Description -->
                 <VBox spacing="8">
                     <children>
                         <Label text="Description:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
@@ -41,6 +43,7 @@
                     </children>
                 </VBox>
 
+                <!-- Date -->
                 <VBox spacing="8">
                     <children>
                         <Label text="Date:" styleClass="form-label" stylesheets="@CSS/admin_dashboard.css" />
@@ -48,6 +51,7 @@
                     </children>
                 </VBox>
 
+                <!-- Year and Term -->
                 <HBox spacing="15">
                     <children>
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
@@ -66,6 +70,7 @@
                     </children>
                 </HBox>
 
+                <!-- Buttons -->
                 <HBox spacing="15" alignment="CENTER">
                     <padding>
                         <Insets top="20.0" />
