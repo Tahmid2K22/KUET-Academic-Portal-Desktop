@@ -204,6 +204,5 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-
     </AnchorPane>
 </StackPane>
