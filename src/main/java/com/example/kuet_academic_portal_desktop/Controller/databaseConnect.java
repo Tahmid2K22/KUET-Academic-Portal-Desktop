@@ -370,7 +370,7 @@ public class databaseConnect {
         conn = getConn();
 
         String query = "SELECT id, title, description, course_no, course_name, due_date, assigned_date, " +
-                       "status, year, term, department, section, teacher_name " +
+                       "year, term, department, section, teacher_name " +
                        "FROM assignments WHERE department=? AND year=? AND term=? AND section=? " +
                        "ORDER BY due_date ASC";
 
@@ -379,9 +379,6 @@ public class databaseConnect {
             stmt.setInt(2, year);
             stmt.setInt(3, term);
             stmt.setString(4, section);
-
-            System.out.println("Loading assignments for: Department=" + department +
-                             ", Year=" + year + ", Term=" + term + ", Section=" + section);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -393,16 +390,12 @@ public class databaseConnect {
                     rs.getString("course_no"),
                     rs.getString("course_name"),
                     rs.getTimestamp("due_date"),
-                    rs.getTimestamp("assigned_date"),
-                    rs.getString("status")
+                    rs.getTimestamp("assigned_date")
                 );
                 assignmentList.add(assignment);
             }
 
-            System.out.println("Loaded " + assignmentList.size() + " assignments from database");
-
         } catch (SQLException e) {
-            System.err.println("Error loading assignments from database: " + e.getMessage());
             e.printStackTrace();
         }
 

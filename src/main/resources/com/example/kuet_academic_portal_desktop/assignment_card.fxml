@@ -48,21 +48,6 @@
                 <Font name="System Bold" size="12" />
             </font>
         </Label>
-
-        <Label fx:id="statusLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 4 10 4 10; -fx-background-radius: 12; -fx-text-fill: white; -fx-background-color: #f39c12;" text="Status: Pending">
-            <font>
-                <Font name="System Bold" size="12" />
-            </font>
-        </Label>
     </VBox>
-
-    <!-- Submit Button Section -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <padding>
-            <Insets top="10" />
-        </padding>
-        <Button fx:id="submitBtn" text="Submit Assignment" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 8 20; -fx-background-radius: 5; -fx-cursor: hand;" />
-        <Label fx:id="submissionLabel" style="-fx-font-size: 11px; -fx-text-fill: #27ae60; -fx-font-style: italic;" text="" visible="false" />
-    </HBox>
 </VBox>
 

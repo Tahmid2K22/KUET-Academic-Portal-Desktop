@@ -10,10 +10,9 @@ public class Assignment {
     private String courseName;
     private Timestamp dueDate;
     private Timestamp assignedDate;
-    private String status;
 
     public Assignment(int id, String title, String description, String courseNo, String courseName,
-                     Timestamp dueDate, Timestamp assignedDate, String status) {
+                     Timestamp dueDate, Timestamp assignedDate) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -21,7 +20,6 @@ public class Assignment {
         this.courseName = courseName;
         this.dueDate = dueDate;
         this.assignedDate = assignedDate;
-        this.status = status;
     }
 
     public int getId() { return id; }
@@ -31,21 +29,18 @@ public class Assignment {
     public String getCourseName() { return courseName; }
     public Timestamp getDueDate() { return dueDate; }
     public Timestamp getAssignedDate() { return assignedDate; }
-    public String getStatus() { return status; }
 
     public void setId(int id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
     public void setDescription(String description) { this.description = description; }
-    public void setStatus(String status) { this.status = status; }
 
-    // Helper methods
     public boolean isOverdue() {
         if (dueDate == null) return false;
         return dueDate.before(new Timestamp(System.currentTimeMillis()));
     }
 
     public String getTeacherName() {
-        return "N/A"; // Default value if not available
+        return "N/A";
     }
 
     public String getFormattedAssignedDate() {
