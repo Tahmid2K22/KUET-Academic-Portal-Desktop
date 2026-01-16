@@ -12,13 +12,13 @@
         <Insets bottom="15" left="15" right="15" top="15" />
     </padding>
 
-    <Label fx:id="courseLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3498db; -fx-background-color: #e3f2fd; -fx-padding: 4 8 4 8; -fx-background-radius: 4;" text="CSE 2103 - Algorithm Analysis">
+    <Label fx:id="courseLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3498db; -fx-background-color: #e3f2fd; -fx-padding: 4 8 4 8; -fx-background-radius: 4;" text="CSE 2103 - Algorithm Analysis" wrapText="true">
         <font>
             <Font name="System Bold" size="12" />
         </font>
     </Label>
 
-    <Label fx:id="titleLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Assignment Title">
+    <Label fx:id="titleLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Assignment Title" wrapText="true">
         <font>
             <Font name="System Bold" size="18" />
         </font>
@@ -31,19 +31,19 @@
     </Label>
 
     <VBox spacing="5">
-        <Label fx:id="teacherLabel" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="Teacher: Dr. Name">
+        <Label fx:id="teacherLabel" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="Teacher: Dr. Name" wrapText="true">
             <font>
                 <Font size="12" />
             </font>
         </Label>
 
-        <Label fx:id="assignedLabel" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="Assigned: 2025-01-01 10:00">
+        <Label fx:id="assignedLabel" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="Assigned: 2025-01-01 10:00" wrapText="true">
             <font>
                 <Font size="12" />
             </font>
         </Label>
 
-        <Label fx:id="dueLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" text="Due: 2025-01-15 23:59">
+        <Label fx:id="dueLabel" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" text="Due: 2025-01-15 23:59" wrapText="true">
             <font>
                 <Font name="System Bold" size="12" />
             </font>

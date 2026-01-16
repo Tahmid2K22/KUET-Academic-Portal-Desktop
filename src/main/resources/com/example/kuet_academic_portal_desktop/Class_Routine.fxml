@@ -58,7 +58,7 @@
 
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #34495e; -fx-padding: 10; -fx-background-radius: 5;">
          <children>
-            <Button fx:id="goDash" mnemonicParsing="false" onAction="#goDashFun" style="-fx-background-color: #2C3E50;" text="Back to Dashboard" textFill="WHITE" />
+            <Button fx:id="goDash" mnemonicParsing="false" onAction="#goDashFun" style="-fx-background-color: #2C3E50;" text="Back to Dashboard" textFill="WHITE" wrapText="true" />
          </children>
         </HBox>
 

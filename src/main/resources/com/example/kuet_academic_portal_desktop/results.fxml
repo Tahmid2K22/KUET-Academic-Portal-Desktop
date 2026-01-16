@@ -93,7 +93,7 @@
 
           <!-- Back Button -->
           <HBox alignment="CENTER">
-              <Button mnemonicParsing="false" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 12 30; -fx-background-radius: 6; -fx-cursor: hand;" text="← Back to Dashboard" onAction="#goBackToDashboard">
+              <Button mnemonicParsing="false" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 12 30; -fx-background-radius: 6; -fx-cursor: hand;" text="← Back to Dashboard" onAction="#goBackToDashboard" wrapText="true">
                   <font>
                       <Font size="14" />
                   </font>

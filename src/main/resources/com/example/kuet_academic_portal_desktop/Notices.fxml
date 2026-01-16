@@ -16,7 +16,7 @@
 
         <VBox prefWidth="1200.0" spacing="10" style="-fx-background-color: #2C3E50; -fx-padding: 20;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <HBox alignment="CENTER_LEFT" spacing="20.0">
-                <Button mnemonicParsing="false" onAction="#goBackToDashboard" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 5; -fx-cursor: hand;" text="← Back to Dashboard">
+                <Button mnemonicParsing="false" onAction="#goBackToDashboard" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 5; -fx-cursor: hand;" text="← Back to Dashboard" wrapText="true">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>

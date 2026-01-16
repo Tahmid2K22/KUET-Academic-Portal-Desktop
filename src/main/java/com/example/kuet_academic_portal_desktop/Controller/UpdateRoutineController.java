@@ -50,6 +50,7 @@ public class UpdateRoutineController {
             conn = db.initialize();
             stmt = conn.prepareStatement("SELECT * FROM class_routine WHERE course_code = ?");
             stmt.setString(1, courseCode);
+            System.out.println(courseCode);
             rs = stmt.executeQuery();
 
             if (rs.next()) {

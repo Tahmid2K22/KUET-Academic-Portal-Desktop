@@ -85,6 +85,8 @@
 .button {
     -fx-cursor: hand;
     -fx-font-size: 13px;
+    -fx-text-overrun: clip;
+    -fx-wrap-text: true;
 }
 
 .button:hover {

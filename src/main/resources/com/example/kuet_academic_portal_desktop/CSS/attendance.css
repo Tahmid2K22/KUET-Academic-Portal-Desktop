@@ -108,6 +108,8 @@
     -fx-padding: 10 20;
     -fx-background-radius: 5;
     -fx-cursor: hand;
+    -fx-text-overrun: clip;
+    -fx-wrap-text: true;
 }
 
 .back-button:hover {

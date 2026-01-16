@@ -7,6 +7,8 @@
     -fx-padding: 10 20;
     -fx-border-color: white;
     -fx-border-width: 0 0 1 0;
+    -fx-text-overrun: clip;
+    -fx-wrap-text: true;
 }
 
 .sidebar-button:hover {

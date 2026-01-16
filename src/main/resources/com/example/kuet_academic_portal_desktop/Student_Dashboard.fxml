@@ -39,7 +39,8 @@
                    layoutY="120"
                    prefWidth="284"
                    alignment="CENTER"
-                   textFill="WHITE">
+                   textFill="WHITE"
+                   wrapText="true">
                 <font>
                     <Font size="19"/>
                 </font>
@@ -52,42 +53,50 @@
 
                 <Button text="Home" prefWidth="260"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
 
                 <Button text="Class Routine" prefWidth="260"
                         onAction="#openClassRoutinePage"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
 
                 <Button text="Assignment" prefWidth="260"
                         onAction="#openAssignmentPage"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
 
                 <Button text="Contact" prefWidth="260"
                         onAction="#openContactsPage"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
 
                 <Button text="Attendance" prefWidth="260"
                         onAction="#openAttendancePage"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
 
                 <Button text="Notice" prefWidth="260"
                         onAction="#openNoticesPage"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
 
                 <Button text="Results" prefWidth="260"
                         onAction="#openResultsPage"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
 
                 <Button text="Logout" prefWidth="260"
                         onAction="#handleLogout"
                         styleClass="sidebar-button"
-                        stylesheets="@CSS/dashboard.css"/>
+                        stylesheets="@CSS/dashboard.css"
+                        wrapText="true"/>
             </VBox>
         </AnchorPane>
 

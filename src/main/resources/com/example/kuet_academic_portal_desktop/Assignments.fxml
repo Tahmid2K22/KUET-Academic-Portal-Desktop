@@ -55,7 +55,7 @@
 
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #34495e; -fx-padding: 10; -fx-background-radius: 5;">
             <children>
-                <Button fx:id="goDash" mnemonicParsing="false" onAction="#goDashFun" style="-fx-background-color: #2C3E50; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 8 15 8 15; -fx-cursor: hand;" text="Back to Dashboard" />
+                <Button fx:id="goDash" mnemonicParsing="false" onAction="#goDashFun" style="-fx-background-color: #2C3E50; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 8 15 8 15; -fx-cursor: hand;" text="Back to Dashboard" wrapText="true" />
             </children>
         </HBox>
 

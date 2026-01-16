@@ -17,18 +17,18 @@
     <!-- Name and Role Header -->
     <HBox alignment="CENTER_LEFT" spacing="15">
         <VBox spacing="4" HBox.hgrow="ALWAYS">
-            <Label fx:id="nameLabel" text="Contact Name" textFill="#2C3E50">
+            <Label fx:id="nameLabel" text="Contact Name" textFill="#2C3E50" wrapText="true">
                 <font>
                     <Font name="System Bold" size="20.0" />
                 </font>
             </Label>
-            <Label fx:id="roleLabel" text="Role" textFill="#7F8C8D">
+            <Label fx:id="roleLabel" text="Role" textFill="#7F8C8D" wrapText="true">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Label>
         </VBox>
-        <Label fx:id="designationLabel" text="Designation" textFill="#34495E" visible="true" managed="true">
+        <Label fx:id="designationLabel" text="Designation" textFill="#34495E" visible="true" managed="true" wrapText="true">
             <font>
                 <Font name="System Bold Italic" size="14.0" />
             </font>
@@ -44,7 +44,7 @@
                     <Font size="13.0" />
                 </font>
             </Label>
-            <Label fx:id="rollIdLabel" text="N/A" textFill="#2C3E50">
+            <Label fx:id="rollIdLabel" text="N/A" textFill="#2C3E50" wrapText="true">
                 <font>
                     <Font size="13.0" />
                 </font>
@@ -58,7 +58,7 @@
                     <Font size="13.0" />
                 </font>
             </Label>
-            <Label fx:id="departmentLabel" text="N/A" textFill="#2C3E50">
+            <Label fx:id="departmentLabel" text="N/A" textFill="#2C3E50" wrapText="true">
                 <font>
                     <Font size="13.0" />
                 </font>
@@ -72,7 +72,7 @@
                     <Font size="13.0" />
                 </font>
             </Label>
-            <Label fx:id="emailLabel" text="N/A" textFill="#2980B9" style="-fx-underline: true; -fx-cursor: hand;">
+            <Label fx:id="emailLabel" text="N/A" textFill="#2980B9" style="-fx-underline: true; -fx-cursor: hand;" wrapText="true">
                 <font>
                     <Font size="13.0" />
                 </font>
@@ -86,7 +86,7 @@
                     <Font size="13.0" />
                 </font>
             </Label>
-            <Label fx:id="phoneLabel" text="N/A" textFill="#2C3E50">
+            <Label fx:id="phoneLabel" text="N/A" textFill="#2C3E50" wrapText="true">
                 <font>
                     <Font size="13.0" />
                 </font>
